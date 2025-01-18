@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  nestjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: docker_monitoring
+    
+    ports:
+      - ${PORT}:${PORT}
+    env_file:
+      - .env
+
