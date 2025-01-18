@@ -6,7 +6,6 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: docker_monitoring
-    
     ports:
       - ${PORT}:${PORT}
     env_file:

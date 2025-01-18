@@ -17,6 +17,14 @@ export class EnvironmentVariables {
   @IsNotEmpty()
   @IsString()
   API_KEY: string;
+
+  @IsNotEmpty()
+  @IsString()
+  BOT_TOKEN: string;
+
+  @IsNotEmpty()
+  @IsString()
+  CHAT_ID: string;
 }
 
 export function validate(
