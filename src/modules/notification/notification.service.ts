@@ -37,6 +37,8 @@ export class NotificationService implements OnModuleInit {
       return;
     }
 
+    console.log('containers', this.containers);
+
     const downContainers = this.containers.filter((c) =>
       c.status.includes('Exited'),
     );
