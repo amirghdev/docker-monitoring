@@ -49,31 +49,26 @@ export class NotificationService implements OnModuleInit {
     console.log('New down containers:', newDownContainers.length);
 
     if (newDownContainers.length > downContainers.length) {
-      for (
-        let index = 0;
-        index < newDownContainers.length - downContainers.length;
-        index++
-      ) {
-        const newDownContainer = newDownContainers.find(
-          (newContainer) =>
-            !downContainers.some(
-              (downContainer) => downContainer.id === newContainer.id,
-            ),
-        );
+      const newDownContainer = newDownContainers.find(
+        (newContainer) =>
+          !downContainers.some(
+            (downContainer) => downContainer.id === newContainer.id,
+          ),
+      );
 
-        if (!newDownContainer) {
-          continue;
-        }
-
-        console.log('New down container:', newDownContainer);
-        downContainers.push(newDownContainer);
-
-        //? Send notification
-        await this.sendTelegramMessage(
-          'Container down: ' + newDownContainer.name,
-        );
+      if (!newDownContainer) {
+        return;
       }
+
+      console.log('New down container:', newDownContainer);
+
+      //? Send notification
+      await this.sendTelegramMessage(
+        'Container down: ' + newDownContainer.name,
+      );
     }
+
+    this.containers = containers;
   }
 
   private async sendTelegramMessage(message: string): Promise<void> {
