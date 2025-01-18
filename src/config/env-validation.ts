@@ -25,6 +25,10 @@ export class EnvironmentVariables {
   @IsNotEmpty()
   @IsString()
   CHAT_ID: string;
+
+  @IsNotEmpty()
+  @IsString()
+  DOCKER_SOCKET_PATH: string;
 }
 
 export function validate(

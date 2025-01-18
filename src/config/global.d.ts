@@ -7,6 +7,7 @@ declare global {
       API_KEY: string;
       BOT_TOKEN: string;
       CHAT_ID: string;
+      DOCKER_SOCKET_PATH: string;
     }
   }
 }
