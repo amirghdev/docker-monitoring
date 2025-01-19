@@ -37,8 +37,6 @@ export class NotificationService implements OnModuleInit {
       return;
     }
 
-    console.log('containers', this.containers);
-
     const downContainers = this.containers.filter((c) =>
       c.status.includes('Exited'),
     );
@@ -65,25 +63,28 @@ export class NotificationService implements OnModuleInit {
       console.log('New down container:', newDownContainer);
 
       //? Send notification
-      await this.sendTelegramMessage(
-        'Container down: ' + newDownContainer.name,
-      );
+      await this.sendTelegramMessage(newDownContainer);
     }
 
     this.containers = containers;
   }
 
-  private async sendTelegramMessage(message: string): Promise<void> {
+  private async sendTelegramMessage(container: DockerContainer): Promise<void> {
     try {
       const url = `${this.TELEGRAM_BASE_URL}/sendMessage`;
 
       await this.httpService.axiosRef.post(url, {
-        text: message,
+        text: this.generateDownContainerMessage(container),
         chat_id: process.env.CHAT_ID,
+        parse_mode: 'HTML',
       });
     } catch (error) {
       console.log(error);
     }
+  }
+
+  private generateDownContainerMessage(container: DockerContainer): string {
+    return `Container down: <b>${container.name}</b> | ${container.status} <code>${container.id}</code>`;
   }
 
   private sleep(ms: number): Promise<void> {
