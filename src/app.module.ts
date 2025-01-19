@@ -6,6 +6,7 @@ import { validate } from './config/env-validation';
 import { LogModule } from './modules/log/log.module';
 import { DockerModule } from './modules/docker/docker.module';
 import { ActionModule } from './modules/action/action.module';
+import { NotificationModule } from './modules/notification/notification.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ActionModule } from './modules/action/action.module';
     LogModule,
     DockerModule,
     ActionModule,
+    NotificationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

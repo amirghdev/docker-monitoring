@@ -6,9 +6,10 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: docker_monitoring
-    
     ports:
       - ${PORT}:${PORT}
     env_file:
       - .env
+    volumes:
+      - ${DOCKER_SOCKET_PATH}:${DOCKER_SOCKET_PATH}
 

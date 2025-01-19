@@ -8,7 +8,7 @@ const Docker = require('dockerode');
 export class DockerService {
   public readonly docker: Dockerode;
   constructor() {
-    this.docker = new Docker({ socketPath: '/var/run/docker.sock' });
+    this.docker = new Docker({ socketPath: process.env.DOCKER_SOCKET_PATH });
   }
 
   public async getAllContainers(): Promise<DockerContainer[]> {

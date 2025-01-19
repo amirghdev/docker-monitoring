@@ -27,7 +27,6 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'error',
 
     // General ESLint Rules
-    'no-console': 'warn', // Warn instead of error to allow debugging
     'no-shadow': 'error', // Disallow variable shadowing
     'no-return-await': 'error', // Prevent redundant return of awaited promises
     curly: ['error', 'all'], // Enforce consistent use of curly braces

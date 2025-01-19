@@ -17,6 +17,18 @@ export class EnvironmentVariables {
   @IsNotEmpty()
   @IsString()
   API_KEY: string;
+
+  @IsNotEmpty()
+  @IsString()
+  BOT_TOKEN: string;
+
+  @IsNotEmpty()
+  @IsString()
+  CHAT_ID: string;
+
+  @IsNotEmpty()
+  @IsString()
+  DOCKER_SOCKET_PATH: string;
 }
 
 export function validate(
